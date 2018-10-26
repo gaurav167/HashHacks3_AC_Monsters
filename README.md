@@ -2,7 +2,8 @@
 
 ## Motivating the Problem
 ### The problem of Insider & Outsider threats 
-With most consumers owning smartphone and mobile devices (91 percent), followed closely by laptop computers (83 percent), the digital marketplace is here now. As users embrace financial technology bringing banking and transactions to mobile users on the move, financial crimes are on a rise. Financial frauds can be classified into two classes: 
+With most consumers owning smartphone and mobile devices (91 percent), followed closely by laptop computers (83 percent), the digital marketplace is here now. As users embrace financial technology bringing banking and transactions to mobile users on the move, financial crimes are on a rise. Financial frauds can be classified into two classes:
+
 - 'Outsider' threats- Threats by malicious third-party actors who do not have access to user credentials but bypasses the security of a system through its loop holes (cracking authentication).
 - 'Insider' threats- Threats by actors (authorized users) who somehow have access to requisite user credentials (including traditional passwords).
 
@@ -24,6 +25,12 @@ This project implements an intelligent payment interface using Artificial Intell
 Our solution authorizes users based on 'human peculiarities' as biometrics. In this respect we utilize mobile key stroke dynamics and adversarial gesture recognition to autheniticate users. These encompass both physiological and behavioral characteristics peculiar to human behavior. Research has shown that these methods have achieved considerable accuracy in authenitication [1].
 
 Our system also creates a 'user DNA' using Sequential Pattern Mining to mine historical trends in genuine transactions committed by a user. It also applies an Euclidean-distance based outlier detection method to identify malicious transactions by intruders and preventing financial losses.   
+
+## How does the payments interface look? 
+
+<img src="https://user-images.githubusercontent.com/26150479/47591016-cabf0d00-d98b-11e8-938d-dd792f032e50.jpg">
+<img src="https://user-images.githubusercontent.com/26150479/47591017-cb57a380-d98b-11e8-881b-bad28cd38e86.jpg">
+<img src="https://user-images.githubusercontent.com/26150479/47591018-cb57a380-d98b-11e8-941b-8b8711bc7470.jpeg">
 
 ## Bibliography
 - Global Fraud Report 2018- https://www.experian.com/assets/decision-analytics/reports/global-fraud-report-2018.pdf
