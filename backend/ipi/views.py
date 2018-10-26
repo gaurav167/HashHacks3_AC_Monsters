@@ -71,7 +71,7 @@ def gen_typing_data(request):
 		for ur in range(len(user)):
 			l[ur].append(user[ur][1])
 		for pr in range(len(password)):
-			p[pr].append(password[ir][1])
+			p[pr].append(password[pr][1])
 
 		counter+=1
 		if counter == 8:
