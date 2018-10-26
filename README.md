@@ -32,7 +32,7 @@ Our system also creates a 'user DNA' using Sequential Pattern Mining to mine his
 
 ## Dataset
 
-<img src="https://user-images.githubusercontent.com/26150479/47591018-cb57a380-d98b-11e8-941b-8b8711bc7470.jpeg">
+<img src="https://user-images.githubusercontent.com/26150479/47592576-74ed6380-d991-11e8-91a6-f0d5bfc8cc41.png">
 
 ## Bibliography
 - Global Fraud Report 2018- https://www.experian.com/assets/decision-analytics/reports/global-fraud-report-2018.pdf
