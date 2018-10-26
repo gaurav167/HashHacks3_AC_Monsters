@@ -26,6 +26,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+
 public class LoginActivity extends AppCompatActivity {
 
     customfonts.TextViewSFProDisplayRegular signUpLink;
@@ -54,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String currentString = "";
         final long[] previousTime = {-1L};
+        final long[] previousTimePwd = {-1L};
         emailId.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -63,6 +65,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String temp = charSequence.toString();
+                if (temp.isEmpty()) {
+                    return;
+                }
                 char newchar = temp.charAt(temp.length() - 1);
                 long currentTime = System.currentTimeMillis();
                 if (previousTime[0] == -1) {
@@ -87,13 +92,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String temp = charSequence.toString();
+                if (temp.isEmpty()) {
+                    return;
+                }
                 char newchar = temp.charAt(temp.length() - 1);
                 long currentTime = System.currentTimeMillis();
-                if (previousTime[0] == -1) {
-                    previousTime[0] = currentTime;
+                if (previousTimePwd[0] == -1) {
+                    previousTimePwd[0] = currentTime;
                 }
-                pwdStack.add(new CharacterTime((char) newchar, currentTime - previousTime[0]));
-                previousTime[0] = currentTime;
+                pwdStack.add(new CharacterTime((char) newchar, currentTime - previousTimePwd[0]));
+                previousTimePwd[0] = currentTime;
+
             }
 
             @Override
@@ -141,26 +150,16 @@ public class LoginActivity extends AppCompatActivity {
                     passwordJSONArr.put(object);
                 }
 
-
                 try {
                     mainObject.put("user", emailJSONArr.toString());
                     mainObject.put("pass", passwordJSONArr.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
+                Log.d("MYTA", mainObject.toString());
                 String toSend = URL + "/ipi/login/";
-                Log.d("MYTAG", mainObject.toString());
-
+//                String toSend = URL + "/ipi/train/";
                 postRequest(toSend, mainObject);
-
-                if (isAllowedAccess) {
-//                    Intent intent = new Intent(LoginActivity.this, WalletCryptoStarActivity.class);
-//                    startActivity(intent);
-                    Toast.makeText(context, "SUCCESS!", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(context, "FAILURE!", Toast.LENGTH_LONG).show();
-                }
             }
         });
     }
@@ -177,20 +176,43 @@ public class LoginActivity extends AppCompatActivity {
                 .post(body)
                 .build();
 
-        final boolean[] isAllowed = {false};
+
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("MYTAG", e.toString());
+                Log.d("MYTAG_FAILURE", e.toString());
                 call.cancel();
 
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("MYTAG", response.body().string());
-                isAllowed[0] = response.body().equals("access");
-                isAllowedAccess = isAllowed[0];
+                String str = response.body().string();
+                Log.d("MYTAG_BODY", str);
+
+                if (str.charAt(str.length() - 6) == 'T') {
+                    isAllowedAccess = true;
+                }
+
+                if (isAllowedAccess) {
+                    Intent intent = new Intent(LoginActivity.this, Payment_method.class);
+                    startActivity(intent);
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(context, "SUCCESS!", Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+                } else {
+                    Intent intent = new Intent(LoginActivity.this, Payment_method.class);
+                    startActivity(intent);
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(context, "FAILURE!", Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+                }
             }
         });
     }

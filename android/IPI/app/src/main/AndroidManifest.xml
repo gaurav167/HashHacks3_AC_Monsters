@@ -37,6 +37,10 @@
             android:screenOrientation="portrait" />
         <!--<activity android:name=".AlertCryptoStarActivity" />-->
         <!--<activity android:name=".ChartCryptoStarActivity"></activity>-->
+
+        <activity android:name=".Payment_method"/>
+
+        <activity android:name=".Payment_Details"></activity>
     </application>
 
 </manifest>
