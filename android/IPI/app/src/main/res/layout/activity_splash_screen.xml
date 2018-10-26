@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context="ws.wolfsoft.cryptostar.SplashScreenActivity">
 
@@ -14,7 +13,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,50 +20,54 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="40.3dp"
-            android:layout_height="40.3dp"
-            android:src="@drawable/ic_logo"/>
+            <ImageView
+                android:layout_width="40.3dp"
+                android:layout_height="40.3dp"
+                android:src="@drawable/ic_logo" />
 
             <customfonts.TextViewSFProDisplaySemibold
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:text="IPI"
-                android:textSize="25sp"
-                android:textColor="#141a22"/>
+                android:textColor="#141a22"
+                android:textSize="25sp" />
 
         </LinearLayout>
 
+        <!--<com.cunoraz.gifview.library.GifView-->
+            <!--custom:gif="@drawable/app_icon"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="280dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="70dp" />-->
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="280dp"
             android:layout_gravity="center"
             android:layout_marginTop="70dp"
-            android:src="@drawable/robot"/>
+            android:src="@drawable/app_icon" />
     </LinearLayout>
 
-
     <customfonts.TextViewSFProDisplayRegular
-        android:layout_above="@+id/bottom_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_btn"
         android:gravity="center"
-        android:textSize="17.3sp"
-        android:text="Continue : "/>
-
+        android:text="Continue : "
+        android:textSize="17.3sp" />
 
 
     <customfonts.Button_SF_Pro_Display_Semibold
         android:id="@+id/bottom_btn"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/black_rect"
-        android:textColor="#fbfbfb"
-        android:textAllCaps="false"
+        android:layout_alignParentBottom="true"
         android:layout_margin="19.3dp"
-        android:text="Get Started"/>
+        android:background="@drawable/black_rect"
+        android:text="Get Started"
+        android:textAllCaps="false"
+        android:textColor="#fbfbfb" />
 
 </RelativeLayout>
