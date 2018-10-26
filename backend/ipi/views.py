@@ -98,5 +98,6 @@ def gen_typing_data(request):
 			print(train_l)
 			print(train_p)
 		print(counter)
+		return JsonResponse({'status':'success', 'access':'True'})
 	else:
 		return HttpResponseNotAllowed(['POST'])
