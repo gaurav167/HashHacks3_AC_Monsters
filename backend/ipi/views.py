@@ -46,9 +46,11 @@ def login_user(request):
 counter = 0
 l = []
 p = []
+train_l = []
+train_p = []
 @csrf_exempt
 def gen_typing_data(request):
-	global counter
+	global counter, l, p, train_p, train_l
 	if request.method == "POST":
 		d = request.POST
 		data = None
@@ -74,9 +76,27 @@ def gen_typing_data(request):
 		counter+=1
 		if counter == 8:
 			counter = 0
+			mean1 = []
+			std1 = []
+			for i in l:
+				std1.append(statistics.stdev(i))
+			for i in l:
+				mean1.append(statistics.mean(i))
+			train_l.append(std1)
+			train_l.append(mean1)
+			mean2 = []
+			std2 = []
+			for i in p:
+				std2.append(statistics.stdev(i))
+			for i in p:
+				mean2.append(statistics.mean(i))
+			train_p.append(std2)
+			train_p.append(mean2)
 			# Call training function ML
 			print(l)
 			print(p)
+			print(train_l)
+			print(train_p)
 		print(counter)
 	else:
 		return HttpResponseNotAllowed(['POST'])
