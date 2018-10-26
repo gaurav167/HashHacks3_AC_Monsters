@@ -66,7 +66,7 @@ def gen_typing_data(request):
 			for i in range(len(user)):
 				l.append([])
 			for i in range(len(password)):
-				l.append([])
+				p.append([])
 
 		for ur in range(len(user)):
 			l[ur].append(user[ur][1])
