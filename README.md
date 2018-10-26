@@ -28,8 +28,7 @@ Our system also creates a 'user DNA' using Sequential Pattern Mining to mine his
 
 ## How does the payments interface look? 
 
-<img src="https://user-images.githubusercontent.com/26150479/47591016-cabf0d00-d98b-11e8-938d-dd792f032e50.jpg">
-<img src="https://user-images.githubusercontent.com/26150479/47591017-cb57a380-d98b-11e8-881b-bad28cd38e86.jpg">
+<img src="https://user-images.githubusercontent.com/26150479/47592268-3efbaf80-d990-11e8-9894-0d9c0638c178.png">
 <img src="https://user-images.githubusercontent.com/26150479/47591018-cb57a380-d98b-11e8-941b-8b8711bc7470.jpeg">
 
 ## Bibliography
