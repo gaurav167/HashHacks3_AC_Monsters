@@ -9,9 +9,11 @@ from .Keystrokedynamics import *
 from .RulesAndCCentroids import *
 import pickle
 import sklearn
+import os
 
 def gesturetest(GestureData):
-    with open("GesturesModel.txt",'rb') as fo:
+    # __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    with open(os.path.abspath("GesturesModel.txt"),"rb") as fo:
         obj = pickle.load(fo)
     
     y_pred = obj.predict(GestureData)
@@ -26,9 +28,9 @@ def gesturetest(GestureData):
 
 def typingtest(Username,Password,NewUsername,NewPass):
     Typing1 = FindAns(Username,Password,NewUsername)
-    Typing2 = FindAns(Username,Password,NewPass)
+    Typing2 = FindAns(Password,Password,NewPass)
     
     return Typing1 and Typing2 
 
 
-print(typingtest(HarshBhardwaj,harsh123,[0.0,1,2,3,4,5,6,7,8,9,10,11,12], [0.0,1,2,3,4,5,6,7]))
+# print(typingtest(HarshBhardwaj,harsh123,[0.0,1,2,3,4,5,6,7,8,9,10,11,12], [0.0,1,2,3,4,5,6,7]))

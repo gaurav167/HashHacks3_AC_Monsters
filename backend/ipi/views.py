@@ -5,6 +5,8 @@ import json
 import statistics
 from .AIModule import Wrapper1
 # from .PsychometricAnalysis import gesturetest, typingtest
+from .RulesAndCCentroids import *
+
 
 @csrf_exempt
 def val_payment(request):
@@ -49,6 +51,7 @@ def login_user(request):
 		# print(password)
 		# call ML Typing validation function. Set value to "val"
 		val = True
+		# val = typingtest(HarshBhardwaj, harsh123, user, password)
 		if val:
 			return JsonResponse({'status':'success', 'access':'True'})
 		else:
@@ -132,6 +135,7 @@ def gesture(request):
 		from math import sqrt
 		dist = sqrt((abs(xi-xf))**2 + abs((yi-yf))**2)
 		val = True
+		# val = gesturetest([[xi, yi, xf, yf, length, time, dist]])
 		if val:
 			return JsonResponse({'status':'success', 'access':'True'})
 		else:
