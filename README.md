@@ -24,11 +24,17 @@ This project implements an intelligent payment interface using Artificial Intell
 
 Our solution authorizes users based on 'human peculiarities' as biometrics. In this respect we utilize mobile key stroke dynamics and adversarial gesture recognition to autheniticate users. These encompass both physiological and behavioral characteristics peculiar to human behavior. Research has shown that these methods have achieved considerable accuracy in authenitication [1].
 
-Our system also creates a 'user DNA' using Sequential Pattern Mining to mine historical trends in genuine transactions committed by a user. It also applies an Euclidean-distance based outlier detection method to identify malicious transactions by intruders and preventing financial losses.   
+Our system also creates a 'user transaction DNA' using Sequential Pattern Mining to mine historical trends in genuine transactions committed by a user. It also applies an Distance Based Outlier Detection method to identify malicious transactions by intruders. This method entails the semantic analytics of the transaction and prevents financial losses.
+<img src="https://user-images.githubusercontent.com/22291740/47601531-ebb94980-d9ef-11e8-9d01-8481b09563e0.png">
 
 ## How does the payments interface look? 
 
 <img src="https://user-images.githubusercontent.com/26150479/47592268-3efbaf80-d990-11e8-9894-0d9c0638c178.png">
+<div>
+<img src="https://user-images.githubusercontent.com/22291740/47601607-f2948c00-d9f0-11e8-9cb0-516e639763a3.jpeg" width="300em" float="left">
+<img src="https://user-images.githubusercontent.com/22291740/47601585-b06b4a80-d9f0-11e8-8d5d-5a02f7c7e61a.jpeg" width="550em" float="right">
+</div>
+
 
 ## Dataset
 
