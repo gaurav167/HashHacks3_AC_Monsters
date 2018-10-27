@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 from django.views.decorators.csrf import csrf_exempt
 import json
 import statistics
-from . import AIModule
+from .AIModule import wrapper1
 
 
 @csrf_exempt
