@@ -13,7 +13,15 @@ def val_payment(request):
 		for key in d.keys():
 			data = json.loads(key)
 		print(dict(data))
+		arange = data['amtRange']
+		card_type = data['card_type']
+		currency = data['currency']
+		s_location = data['s_location']
+		reciever = data['reciever']
+		r_location = data['r_location']
+		transaction_type = data['t_type']
 		# call ML pay validation function for transaction validation. Set value to "val"
+		# val = wrapper1(arange, card_type, currency, s_location, reciever, r_location, transaction_type)
 		val = True
 		if val:
 			return JsonResponse({'status':'success', 'access':'True'})
@@ -103,5 +111,53 @@ def gen_typing_data(request):
 			print(train_p)
 		print(counter)
 		return JsonResponse({'status':'success', 'access':'True'})
+	else:
+		return HttpResponseNotAllowed(['POST'])
+
+def gesture(request):
+	if request.method == "POST":
+		d = request.POST
+		data = None
+		for key in d.keys():
+			data = json.loads(key)
+		xi = data['xi']
+		yi = data['yi']
+		xf = data['xf']
+		yf = data['yf']
+		length = data['length']
+		time = data['time']
+		val = True
+		if val:
+			return JsonResponse({'status':'success', 'access':'True'})
+		else:
+			return JsonResponse({'status':'success', 'access':'False'})
+
+	else:
+		return HttpResponseNotAllowed(['POST'])
+
+
+cnt = 0
+ges_tr = []
+def train_ges(request):
+	global cnt, ges_tr
+	if request.method == "POST":
+		d = request.POST
+		data = None
+		for key in d.keys():
+			data = json.loads(key)
+		xi = data['xi']
+		yi = data['yi']
+		xf = data['xf']
+		yf = data['yf']
+		length = data['length']
+		time = data['time']
+		cnt+=1
+		ges_tr.append([xi, yi, xf, yf, length, time])
+		if cnt==20:
+			cnt = 0
+			print(ges_tr)
+		print(cnt)
+		return JsonResponse({'status':'success', 'access':'True'})
+
 	else:
 		return HttpResponseNotAllowed(['POST'])
