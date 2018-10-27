@@ -162,5 +162,4 @@ def train_ges(request):
 		return JsonResponse({'status':'success', 'access':'True'})
 
 	else:
-		# return HttpResponseNotAllowed(['POST'])
-		return HttpResponse('sd')
+		return HttpResponseNotAllowed(['POST'])
