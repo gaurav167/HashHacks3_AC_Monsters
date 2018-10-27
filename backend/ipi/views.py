@@ -3,8 +3,8 @@ from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 from django.views.decorators.csrf import csrf_exempt
 import json
 import statistics
-from .AIModule import wrapper1
-
+from .AIModule import Wrapper1
+# from .PsychometricAnalysis import gesturetest, typingtest
 
 @csrf_exempt
 def val_payment(request):
@@ -23,7 +23,7 @@ def val_payment(request):
 		r_location = data['r_location']
 		transaction_type = data['t_type']
 		# call ML pay validation function for transaction validation. Set value to "val"
-		val = wrapper1(arange, card_type, currency, s_location, reciever, r_location, transaction_type)
+		val = Wrapper1([arange, card_type, currency, s_location, reciever, r_location, transaction_type])
 		# val = True
 		if val:
 			return JsonResponse({'status':'success', 'access':'True'})
@@ -129,6 +129,8 @@ def gesture(request):
 		yf = data['yf']
 		length = data['length']
 		time = data['time']
+		from math import sqrt
+		dist = sqrt((abs(xi-xf))**2 + abs((yi-yf))**2)
 		val = True
 		if val:
 			return JsonResponse({'status':'success', 'access':'True'})
@@ -155,8 +157,10 @@ def train_ges(request):
 		yf = data['yf']
 		length = data['length']
 		time = data['time']
+		from math import sqrt
+		dist = sqrt((abs(xi-xf))**2 + abs((yi-yf))**2)
 		cnt+=1
-		ges_tr.append([xi, yi, xf, yf, length, time])
+		ges_tr.append([xi, yi, xf, yf, length, time, dist])
 		if cnt==20:
 			cnt = 0
 			print(ges_tr)

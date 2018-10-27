@@ -5,9 +5,9 @@ Created on Sat Oct 27 07:42:22 2018
 @author: Minkush
 """
 
-from . import RulesAndCCentroids
-from . import OutlierAnalysis
-from . import RuleMatcher
+from .RulesAndCCentroids import *
+from .OutlierAnalysis import *
+from .RuleMatcher import *
 
 def Wrapper1(newT):
     #print(newT)
