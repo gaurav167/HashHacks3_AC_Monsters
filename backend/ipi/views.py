@@ -3,6 +3,8 @@ from django.http import HttpResponse, JsonResponse, HttpResponseNotAllowed
 from django.views.decorators.csrf import csrf_exempt
 import json
 import statistics
+from . import AIModule
+
 
 @csrf_exempt
 def val_payment(request):
@@ -21,8 +23,8 @@ def val_payment(request):
 		r_location = data['r_location']
 		transaction_type = data['t_type']
 		# call ML pay validation function for transaction validation. Set value to "val"
-		# val = wrapper1(arange, card_type, currency, s_location, reciever, r_location, transaction_type)
-		val = True
+		val = wrapper1(arange, card_type, currency, s_location, reciever, r_location, transaction_type)
+		# val = True
 		if val:
 			return JsonResponse({'status':'success', 'access':'True'})
 		else:
