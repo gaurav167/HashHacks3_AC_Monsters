@@ -7,8 +7,12 @@ import statistics
 @csrf_exempt
 def val_payment(request):
 	if request.method == "POST":
-		data = request.POST
-		transaction = data['transaction']
+		d = request.POST
+		data = None
+		# transaction = data['transaction']
+		for key in d.keys():
+			data = json.loads(key)
+		print(dict(data))
 		# call ML pay validation function for transaction validation. Set value to "val"
 		val = True
 		if val:
