@@ -114,9 +114,9 @@ public class Payment_Details extends AppCompatActivity {
                 transaction.recieverLocation = reciverCityView.getText().toString();
                 transaction.amount = Float.parseFloat(amountView.getText().toString());
                 if (transaction.amount > 5000.00) {
-                    transaction.amountRange = "high";
+                    transaction.amountRange = "High";
                 } else {
-                    transaction.amountRange = "low";
+                    transaction.amountRange = "Low";
                 }
                 transaction.cardType = "Debit";
                 transaction.currency = "INR";
@@ -127,7 +127,7 @@ public class Payment_Details extends AppCompatActivity {
                 transaction.timeFormat = s;
 
                 JSONObject object = JSONIFY(transaction);
-//                Log.d("MYT", object.toString());
+                Log.d("MY__PAYMENT_DATA", object.toString());
                 String toSend = URL + "/ipi/pay/";
 
                 postRequest(toSend, object);
@@ -151,7 +151,7 @@ public class Payment_Details extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("MYTAG_FAILURE", e.toString());
+                Log.d("MY__FAILURE", e.toString());
                 call.cancel();
 
             }
@@ -159,8 +159,31 @@ public class Payment_Details extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String str = response.body().string();
-                Log.d("MYTAG_BODY", str);
+                Log.d("MY__PAYMENT_RESPONSE", str);
+
+                boolean isAllowedAccess = false;
+                if (str.charAt(str.length() - 6) == 'T') {
+                    isAllowedAccess = true;
                 }
+
+                if (isAllowedAccess) {
+                    Intent intent = new Intent(Payment_Details.this, PaymentRecieptActivity.class);
+                    intent.putExtra("state", "success");
+                    intent.putExtra("amount", transaction.amount);
+                    intent.putExtra("reciever", transaction.recieverName);
+                    intent.putExtra("timestamp", transaction.timeFormat);
+                    intent.putExtra("type", transaction.typeOfTransact);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Payment_Details.this, PaymentRecieptActivity.class);
+                    intent.putExtra("state", "unsuc");
+                    intent.putExtra("amount", transaction.amount);
+                    intent.putExtra("reciever", transaction.recieverName);
+                    intent.putExtra("timestamp", transaction.timeFormat);
+                    intent.putExtra("type", transaction.typeOfTransact);
+                    startActivity(intent);
+                }
+            }
         });
     }
 

@@ -1,6 +1,9 @@
 package ModelClass;
 
-public class Transaction {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Transaction  {
     public String recieverName, recieverLocation;
     public double amount;
     //    Withdrawal, Transfer, Deposit
@@ -16,9 +19,9 @@ public class Transaction {
         this.cardType = "debit";
         this.amount = 3000.00;
         if(amount>5000.00){
-            amountRange="high";
+            amountRange="High";
         }else{
-            amountRange="low";
+            amountRange="Low";
         }
 
         this.currency = "INR";

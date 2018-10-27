@@ -151,7 +151,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
 
     void postRequest(String url, JSONObject object) {
-        Log.d("MY_OBJECT", object.toString());
+        Log.d("MY__GESTURE", object.toString());
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = RequestBody.create(JSON, object.toString());
@@ -165,7 +165,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("MYTAG_FAILURE", e.toString());
+                Log.d("MY__FAILURE", e.toString());
                 call.cancel();
 
             }
@@ -173,7 +173,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String str = response.body().string();
-                Log.d("MYTAG_BODY", str);
+                Log.d("MY__GESTURE_RESPONSE", str);
 
                 Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                 startActivity(intent);

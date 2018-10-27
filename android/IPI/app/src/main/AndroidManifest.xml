@@ -44,12 +44,21 @@
         <activity
             android:name=".Payment_method"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+        </activity>
 
         <activity
             android:name=".Payment_Details"
             android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".PaymentRecieptActivity"
+            android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>

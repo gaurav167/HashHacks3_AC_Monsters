@@ -20,12 +20,12 @@ public class Payment_method extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_payment_method);
         context = this;
 
-        americanExpress = (LinearLayout) findViewById(R.id.americanExpress);
-        visa = (LinearLayout) findViewById(R.id.visa);
-        mastercard = (LinearLayout) findViewById(R.id.mastercard);
-        rightmark1 = (ImageView) findViewById(R.id.rightmark1);
-        rightmark2 = (ImageView) findViewById(R.id.rightmark2);
-        rightmark3 = (ImageView) findViewById(R.id.rightmark3);
+        americanExpress = findViewById(R.id.americanExpress);
+        visa = findViewById(R.id.visa);
+        mastercard = findViewById(R.id.mastercard);
+        rightmark1 = findViewById(R.id.rightmark1);
+        rightmark2 = findViewById(R.id.rightmark2);
+        rightmark3 = findViewById(R.id.rightmark3);
 
         americanExpress.setOnClickListener(this);
         visa.setOnClickListener(this);

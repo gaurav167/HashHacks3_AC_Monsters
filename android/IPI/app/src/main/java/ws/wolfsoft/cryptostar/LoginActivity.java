@@ -157,7 +157,7 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Log.d("MYTA", mainObject.toString());
+                Log.d("MY__LOGIN_DATA", mainObject.toString());
                 String toSend = URL + "/ipi/login/";
 //                String toSend = URL + "/ipi/train/";
                 postRequest(toSend, mainObject);
@@ -181,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("MYTAG_FAILURE", e.toString());
+                Log.d("MY__FAILURE", e.toString());
                 call.cancel();
 
             }
@@ -189,7 +189,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String str = response.body().string();
-                Log.d("MYTAG_BODY", str);
+                Log.d("MY__LOGIN_DATA_RESPONSE", str);
 
                 if (str.charAt(str.length() - 6) == 'T') {
                     isAllowedAccess = true;
