@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="ws.wolfsoft.cryptostar.Payment_Details">
 
@@ -16,14 +16,13 @@
         android:background="@color/background"
         android:orientation="vertical">
 
-
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            card_view:cardElevation="8dp"
+            android:background="#ffffff"
             app:cardCornerRadius="5dp"
-            android:background="#ffffff">
+            card_view:cardElevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,6 +31,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/nameOfP"
                     android:layout_width="100dp"
                     android:layout_height="60dp"
                     android:src="@drawable/ic_visa" />
@@ -50,11 +50,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            app:cardCornerRadius="5dp"
-            card_view:cardElevation="9dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/round_border"
+            app:cardCornerRadius="5dp"
 
-            android:background="@drawable/round_border">
+            card_view:cardElevation="9dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,17 +66,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
-                    android:layout_marginRight="18dp"
                     android:layout_marginTop="18dp"
+                    android:layout_marginRight="18dp"
                     android:background="@drawable/round_border">
 
                     <customfonts.EditText_Roboto_Regular
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
-                        android:hint="CARD NUMBER"
+                        android:text="4591 1000 1100 2940"
                         android:padding="15dp"
-                        android:textSize="13dp"/>
+                        android:textSize="13dp" />
 
                 </LinearLayout>
 
@@ -90,7 +90,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
-                        android:hint="CARDHOLDER'S NAME"
+                        android:text="Harsh Bhardwaj"
                         android:padding="15dp"
                         android:textSize="13dp" />
 
@@ -104,9 +104,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
                         android:layout_gravity="center"
                         android:layout_marginLeft="18dp"
+                        android:layout_weight="3"
                         android:background="@drawable/round_border">
 
 
@@ -120,12 +120,13 @@
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
+                        android:layout_weight="3"
                         android:background="@drawable/round_border">
 
 
@@ -139,11 +140,12 @@
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="18dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginRight="18dp"
                         android:layout_weight="3"
                         android:background="@drawable/round_border">
 
@@ -152,56 +154,54 @@
                             android:layout_height="wrap_content"
                             android:background="#00000000"
                             android:hint="CVV"
-                            android:textSize="12dp"
-                            android:padding="13dp" />
+                            android:padding="13dp"
+                            android:textSize="12dp" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
 
-                    <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="   Save cradit card information"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="10dp"/>
-
-                <customfonts.MyTextView_Roboto_Medium
+                <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:text="   Save cradit card information" />
+
+                <customfonts.MyTextView_Roboto_Medium
+                    android:id="@+id/nextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/rounded_button"
+                    android:gravity="center"
+                    android:padding="15dp"
                     android:text="Next Step"
                     android:textAllCaps="false"
-                    android:layout_marginTop="30dp"
-                    android:textColor="#ffffff"
-                    android:padding="15dp"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                   android:background="@drawable/rounded_button"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"/>
+                    android:textColor="#ffffff" />
 
                 <customfonts.MyTextView_Roboto_Regular
                     android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Back"
-                    android:padding="15dp"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:background="@drawable/rounded_button2"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="20dp"
-                    android:textAllCaps="false"
                     android:layout_marginBottom="20dp"
-                    />
-
+                    android:background="@drawable/rounded_button2"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Back"
+                    android:textAllCaps="false" />
 
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
-
 
 
     </LinearLayout>

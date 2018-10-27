@@ -25,7 +25,7 @@
             android:textColor="@color/textcolor"
             android:gravity="center"
             android:paddingRight="35dp"
-            android:text="Payment methods"/>
+            android:text="IPI"/>
 
     </LinearLayout>
 
