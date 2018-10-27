@@ -114,6 +114,7 @@ def gen_typing_data(request):
 	else:
 		return HttpResponseNotAllowed(['POST'])
 
+@csrf_exempt
 def gesture(request):
 	if request.method == "POST":
 		d = request.POST
@@ -138,6 +139,7 @@ def gesture(request):
 
 cnt = 0
 ges_tr = []
+@csrf_exempt
 def train_ges(request):
 	global cnt, ges_tr
 	if request.method == "POST":
@@ -160,4 +162,5 @@ def train_ges(request):
 		return JsonResponse({'status':'success', 'access':'True'})
 
 	else:
-		return HttpResponseNotAllowed(['POST'])
+		# return HttpResponseNotAllowed(['POST'])
+		return HttpResponse('sd')
