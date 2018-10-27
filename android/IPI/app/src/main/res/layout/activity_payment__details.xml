@@ -74,8 +74,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
-                        android:text="4591 1000 1100 2940"
                         android:padding="15dp"
+                        android:text="4591 1000 1100 2940"
                         android:textSize="13dp" />
 
                 </LinearLayout>
@@ -90,8 +90,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
-                        android:text="Harsh Bhardwaj"
                         android:padding="15dp"
+                        android:text="Harsh Bhardwaj"
                         android:textSize="13dp" />
 
                 </LinearLayout>
@@ -167,7 +167,85 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="   Save cradit card information" />
+                    android:text="   Save card information" />
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/round_border"
+            app:cardCornerRadius="5dp"
+
+            card_view:cardElevation="9dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="18dp"
+                    android:background="@drawable/round_border">
+
+                    <customfonts.EditText_Roboto_Regular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:id="@+id/recieverName"
+                        android:hint="Reciever name"
+                        android:padding="15dp"
+                        android:textSize="13dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="18dp"
+                    android:background="@drawable/round_border">
+
+                    <customfonts.EditText_Roboto_Regular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:hint="Amount"
+                        android:inputType="number"
+                        android:padding="15dp"
+                        android:id="@+id/amountBox"
+                        android:textSize="13dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="18dp"
+                    android:background="@drawable/round_border">
+
+                    <customfonts.EditText_Roboto_Regular
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:hint="Reciever's city"
+                        android:id="@+id/recieverCity"
+                        android:padding="15dp"
+                        android:textSize="13dp" />
+
+                </LinearLayout>
 
                 <customfonts.MyTextView_Roboto_Medium
                     android:id="@+id/nextButton"
@@ -177,7 +255,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/rounded_button"
+                    android:background="#000000"
                     android:gravity="center"
                     android:padding="15dp"
                     android:text="Next Step"
@@ -185,7 +263,7 @@
                     android:textColor="#ffffff" />
 
                 <customfonts.MyTextView_Roboto_Regular
-                    android:id="@+id/button"
+                    android:id="@+id/backButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -202,8 +280,6 @@
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
-
-
     </LinearLayout>
 
 </LinearLayout>

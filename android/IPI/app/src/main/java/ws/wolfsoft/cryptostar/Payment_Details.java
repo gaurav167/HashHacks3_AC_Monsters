@@ -8,37 +8,63 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Adapter.ItemData;
 import Adapter.ItemDataClass;
 import Adapter.SpinnerClassAdapter;
 import Adapter.SpinnerCousineAdapter;
+import ModelClass.Transaction;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Payment_Details extends AppCompatActivity {
 
     String name;
     ImageView imageView;
     customfonts.MyTextView_Roboto_Medium nextStepButton;
+    Transaction transaction;
+    customfonts.EditText_Roboto_Regular reciverCityView;
+    customfonts.EditText_Roboto_Regular reciverNameView;
+    customfonts.EditText_Roboto_Regular amountView;
+    public static String URL = "https://guarded-basin-93568.herokuapp.com";
+
+    public static final MediaType JSON = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment__details);
         Intent intent = getIntent();
+        transaction = new Transaction();
+
+        android.text.format.DateFormat df = new android.text.format.DateFormat();
+        String s = String.valueOf(df.format("dd/MM/yy hh:mm", new java.util.Date()));
+        transaction.timeFormat = s;
+
+
         imageView = findViewById(R.id.nameOfP);
         nextStepButton = findViewById(R.id.nextButton);
+        reciverCityView = findViewById(R.id.recieverCity);
+        amountView = findViewById(R.id.amountBox);
+        reciverNameView = findViewById(R.id.recieverName);
+
 
         if (intent.getStringExtra("name").equals("rupay")) {
             imageView.setImageResource(R.drawable.rupay__);
         } else if (intent.getStringExtra("name").equals("visa")) {
             imageView.setImageResource(R.drawable.ic_visa);
-//            imageView.setImageResource(getDrawable(R.id));
-//            imageView.setImageResource(R.id.ic_visa);
         } else {
             imageView.setImageResource(R.drawable.ic_mastercard);
-//            imageView.setImageResource(R.id.ic_mastercard);
-
         }
 
         ArrayList<ItemData> list = new ArrayList<>();
@@ -84,8 +110,76 @@ public class Payment_Details extends AppCompatActivity {
         nextStepButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("MYT", "GOING NEXT");
+                transaction.recieverName = reciverNameView.getText().toString();
+                transaction.recieverLocation = reciverCityView.getText().toString();
+                transaction.amount = Float.parseFloat(amountView.getText().toString());
+                if (transaction.amount > 5000.00) {
+                    transaction.amountRange = "high";
+                } else {
+                    transaction.amountRange = "low";
+                }
+                transaction.cardType = "Debit";
+                transaction.currency = "INR";
+                transaction.senderLocation = "Washington";
+                transaction.typeOfTransact = "deposit";
+                android.text.format.DateFormat df = new android.text.format.DateFormat();
+                String s = String.valueOf(df.format("dd/MM/yy hh:mm", new java.util.Date()));
+                transaction.timeFormat = s;
+
+                JSONObject object = JSONIFY(transaction);
+//                Log.d("MYT", object.toString());
+                String toSend = URL + "/ipi/pay/";
+
+                postRequest(toSend, object);
             }
         });
+    }
+
+
+    void postRequest(String url, JSONObject object) {
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody body = RequestBody.create(JSON, object.toString());
+
+        final Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("MYTAG_FAILURE", e.toString());
+                call.cancel();
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String str = response.body().string();
+                Log.d("MYTAG_BODY", str);
+                }
+        });
+    }
+
+    JSONObject JSONIFY(Transaction transaction) {
+        JSONObject object = new JSONObject();
+
+        try {
+            object.put("amtRange", transaction.amountRange.toString());
+            object.put("card_type", transaction.cardType.toString());
+            object.put("currency", transaction.currency);
+            object.put("s_location", transaction.senderLocation);
+            object.put("reciever", transaction.recieverName);
+            object.put("r_location", transaction.recieverLocation);
+            object.put("t_type", transaction.typeOfTransact);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return object;
     }
 }

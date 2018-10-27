@@ -122,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String mail = String.valueOf(emailId.getText());
                 String password = String.valueOf(pswrd.getText());
 

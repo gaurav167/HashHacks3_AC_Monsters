@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context="ws.wolfsoft.cryptostar.SplashScreenActivity">
 
@@ -16,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -31,43 +32,34 @@
                 android:layout_marginLeft="15dp"
                 android:text="IPI"
                 android:textColor="#141a22"
-                android:textSize="25sp" />
+                android:textSize="70sp" />
 
         </LinearLayout>
 
-        <!--<com.cunoraz.gifview.library.GifView-->
-            <!--custom:gif="@drawable/app_icon"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="280dp"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_marginTop="70dp" />-->
-
-        <ImageView
+        <com.cunoraz.gifview.library.GifView
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="70dp"
-            android:src="@drawable/app_icon" />
+            custom:gif="@drawable/app_robot" />
+
+        <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="280dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="70dp"-->
+        <!--android:src="@drawable/app_icon" />-->
     </LinearLayout>
 
-    <customfonts.TextViewSFProDisplayRegular
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_btn"
-        android:gravity="center"
-        android:text="Continue : "
-        android:textSize="17.3sp" />
-
-
-    <customfonts.Button_SF_Pro_Display_Semibold
-        android:id="@+id/bottom_btn"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="19.3dp"
-        android:background="@drawable/black_rect"
-        android:text="Get Started"
-        android:textAllCaps="false"
-        android:textColor="#fbfbfb" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:text="Swipe to continue" />
 
 </RelativeLayout>
